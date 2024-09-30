@@ -1,0 +1,6 @@
+rootProject.name = 'developer-guide-spring'
+
+include 'application-batch'
+include 'application-web-mvc'
+include 'domain-mysql'
+include 'etc-yaml-importer'

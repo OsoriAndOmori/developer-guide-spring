@@ -1,0 +1,35 @@
+services:
+  mysql:
+    image: mysql
+    container_name: developer-guide-mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=dev_guide
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=dev.password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./init-docker/mysql:/docker-entrypoint-initdb.d
+      - ./.db-data/mysql:/var/lib/mysql
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./init-docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./.db-data/prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.db-data/grafana:/var/lib/grafana
