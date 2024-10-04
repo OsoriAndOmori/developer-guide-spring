@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'war'
 }
 
 group = 'com.skt'
@@ -12,11 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'jakarta.servlet:jakarta.servlet-api:6.1.0'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-core:10.1.30'
     implementation 'org.springframework:spring-webmvc:6.1.4'
-    implementation project(':core-autoconfigure')
-
 }
 
 tasks.named('test') {
