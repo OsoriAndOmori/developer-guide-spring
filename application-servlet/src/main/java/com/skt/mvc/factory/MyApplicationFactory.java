@@ -25,7 +25,7 @@ public class MyApplicationFactory {
         tomcat.setConnector(connector);
         Context context = tomcat.addContext("", "/");
 
-        // 2. 기본 ComponentScan 한 바퀴 돌림
+        // 2. Spring Container 생성
         AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
 
         // 3. Auto Configure 돌리기
