@@ -1,2 +1,3 @@
-com.skt.autoconfigure.bean.TestAutoConfiguration
+com.skt.autoconfigure.bean.Test1AutoConfiguration
 com.skt.autoconfigure.bean.Test2AutoConfiguration
+com.skt.autoconfigure.bean.Test3AutoConfiguration
