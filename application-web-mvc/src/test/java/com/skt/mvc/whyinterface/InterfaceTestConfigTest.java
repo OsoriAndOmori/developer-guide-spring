@@ -1,5 +1,6 @@
 package com.skt.mvc.whyinterface;
 
+import com.skt.mvc.whyinterface.config.InterfaceTestConfig;
 import org.junit.jupiter.api.Test;
 
 class InterfaceTestConfigTest {

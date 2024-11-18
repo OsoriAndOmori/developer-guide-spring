@@ -1,9 +1,10 @@
 package com.skt.mvc.whyinterface;
 
+import com.skt.mvc.whyinterface.noti.SendPolicyInterface;
+import com.skt.mvc.whyinterface.pre.PreProcessInterface;
+import com.skt.mvc.whyinterface.process.ProcessDataInterface;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
 public class InterfaceService4 {
     private final PreProcessInterface preProcessInterface; //이거 수미님이 구현하세요

@@ -1,4 +1,4 @@
-package com.skt.mvc.whyinterface;
+package com.skt.mvc.whyinterface.noti;
 
 import org.springframework.stereotype.Component;
 
