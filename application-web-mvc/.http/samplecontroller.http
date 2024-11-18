@@ -1,2 +1,2 @@
 ###
-GET localhost:8080/sample
+GET localhost:8080/sample?id=test

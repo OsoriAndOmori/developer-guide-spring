@@ -15,7 +15,7 @@ public class SampleController {
 
     @GetMapping("/sample")
     public SampleResponse sample(SampleRequestParam param) {
-        return sampleService1.sample2(param);
+        return SampleResponse.of(sampleService1.sample2(param.getId()));
     }
 
     //파라미터 검증
