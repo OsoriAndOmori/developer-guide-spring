@@ -1,7 +1,6 @@
 spring:
   profiles:
     active: local
-
 management:
   server:
     port: 8081
@@ -24,3 +23,7 @@ management:
     metrics:
       export:
         step: 1s
+
+logging:
+  level:
+    org.springframework.orm.jpa: debug

@@ -1,0 +1,17 @@
+###
+GET localhost:8080/beans
+
+###
+GET localhost:8080/sample?id=test
+
+###
+POST localhost:8080/sample/success
+
+###
+POST localhost:8080/sample/fail
+
+###
+POST localhost:8080/sample/primitive/success
+
+###
+POST localhost:8080/sample/primitive/fail
