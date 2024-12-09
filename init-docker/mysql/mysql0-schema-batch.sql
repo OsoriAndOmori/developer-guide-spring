@@ -99,7 +99,7 @@ INSERT INTO BATCH_JOB_SEQ (ID, UNIQUE_KEY) select * from (select 0 as ID, '0' as
 
 create table sample
 (
-    id   varchar(10)  not null
+    id   varchar(100)  not null
         primary key,
     name varchar(100) not null
 );
