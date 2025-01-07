@@ -33,3 +33,11 @@ services:
       - "3000:3000"
     volumes:
       - ./.db-data/grafana:/var/lib/grafana
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80" # 로컬 포트 8080을 컨테이너의 80번 포트와 매핑
+    volumes:
+      - ./init-docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro # Nginx 설정 파일
+      - ./application-web-mvc/src/main/resources/static:/usr/share/nginx/html:ro
