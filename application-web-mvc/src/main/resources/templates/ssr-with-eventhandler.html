@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1 id="myHeading" th:text="${message}">Hello</h1>
+</body>
+<script>
+    // h1 요소 가져오기
+    const heading = document.getElementById('myHeading');
+
+    // 클릭 이벤트 핸들러 추가
+    heading.addEventListener('click', function () {
+        alert('Hello! You clicked the heading.');
+    });
+</script>
+</html>

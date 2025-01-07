@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script th:src="@{/js/script.js}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+<div th:include="handlebars/templates.html"></div>
+<script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        // Thymeleaf에서 서버 데이터를 JavaScript 변수에 할당
+        var message = /*[[${message}]]*/ 'default message';
+
+        // 템플릿 가져오기
+        const templateSource = document.getElementById('template').innerHTML;
+        // 템플릿 컴파일
+        const template = Handlebars.compile(templateSource);
+
+        // 데이터
+        const data = {
+            title: message
+        };
+
+        // 렌더링
+        const renderedHtml = template(data);
+
+        // 렌더링 결과 삽입
+        document.getElementById('content').innerHTML = renderedHtml;
+    });
+</script>
+</html>
