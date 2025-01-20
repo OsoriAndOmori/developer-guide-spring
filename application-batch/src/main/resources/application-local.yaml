@@ -3,4 +3,8 @@ server:
 
 logging:
   level:
-    root: debug
+    root: INFO
+    org.springframework.transaction: DEBUG
+    org.springframework.jdbc.support.JdbcTransactionManager: DEBUG
+  pattern:
+    console: "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){yellow} %clr(%-5p) %clr([%0.40t]){magenta} %clr(%0.40logger{0}){blue} %clr(:){yellow} %clr(%m){faint}%n"

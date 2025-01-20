@@ -1,4 +1,4 @@
-package com.skt.applicationbatch.job.cursorvspaging;
+package com.skt.applicationbatch.job;
 
 import com.skt.applicationbatch.JobTestUtils;
 import org.junit.jupiter.api.Test;
@@ -11,19 +11,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootTest
-class CursorJobConfigTest {
+class SimpleJobTest {
     @Autowired
     private JobTestUtils jobTestUtils;
 
     @Test
-    public void testCursorJob() throws Exception {
+    public void testSimpleJob() throws Exception {
         JobParametersBuilder paramBuilder = new JobParametersBuilder();
         paramBuilder.addLong("ts", System.currentTimeMillis());
 
         Map<String, String> param = new HashMap<>();
         param.forEach(paramBuilder::addString);
 
-        JobExecution jobExecution = jobTestUtils.getJobTester("cursorTestJob")
+        JobExecution jobExecution = jobTestUtils.getJobTester("simpleJobBean")
                 .launchJob(paramBuilder.toJobParameters());
 
         jobTestUtils.loggingJobExecution(jobExecution);

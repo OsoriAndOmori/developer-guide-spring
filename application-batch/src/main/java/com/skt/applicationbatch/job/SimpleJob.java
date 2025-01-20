@@ -20,7 +20,7 @@ public class SimpleJob {
 
     @Bean
     public Job simpleJobBean() {
-        return new JobBuilder("simpleJob", jobRepository)
+        return new JobBuilder("simpleJob2", jobRepository)
                 .start(simpleStepBean())
                 .build();
     }
