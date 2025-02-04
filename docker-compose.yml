@@ -1,9 +1,8 @@
 services:
   mysql:
-    image: mysql
-    container_name: developer-guide-mysql
+    image: mysql:8.0.36
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=dev_guide
@@ -41,3 +40,52 @@ services:
     volumes:
       - ./init-docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro # Nginx 설정 파일
       - ./application-web-mvc/src/main/resources/static:/usr/share/nginx/html:ro
+      - nginx-logs:/var/log/nginx
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.6.2
+    environment:
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+      - "xpack.security.enabled=false"
+      - "xpack.security.http.ssl.enabled=false"
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./.db-data/es:/usr/share/elasticsearch/data
+
+  logstash:
+    image: logstash-with-loki # init-docker 안에 들어가서 docker build -t logstash-with-loki .
+    volumes:
+      - ./init-docker/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    environment:
+      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
+    depends_on:
+      - elasticsearch
+      - loki
+    ports:
+      - "5044:5044"
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.6.2
+    user: root
+    volumes:
+      - ./init-docker/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - nginx-logs:/var/log/nginx:ro
+    depends_on:
+      - nginx
+      - logstash
+    command: [ "filebeat", "-e" ]
+
+  loki:
+    image: grafana/loki:2.8.2
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./.db-data/loki:/loki
+    command: -config.file=/etc/loki/local-config.yaml
+
+volumes:
+  nginx-logs:

@@ -1,0 +1,7 @@
+filebeat.inputs:
+  - type: log
+    paths:
+      - "/var/log/nginx/access.log"
+      - "/var/log/nginx/error.log"
+output.logstash:
+  hosts: ["host.docker.internal:5044"]
