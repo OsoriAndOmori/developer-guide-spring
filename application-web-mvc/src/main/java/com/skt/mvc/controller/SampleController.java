@@ -4,14 +4,11 @@ import com.skt.mvc.model.request.SampleRequestParam;
 import com.skt.mvc.model.response.SampleResponse;
 import com.skt.mvc.service.SampleService1;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 

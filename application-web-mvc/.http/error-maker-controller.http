@@ -1,0 +1,9 @@
+###
+GET localhost:8080/heap-full
+
+###
+GET localhost:8080/heap-clear
+
+
+###
+GET localhost:8080/stack-overflow
